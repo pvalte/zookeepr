@@ -6,17 +6,16 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 function filterByQuery(query, animalsArray) {
-    let personalityTraitsArray = [];
-    // Note that we save the animalsArray as filteredResults here:
     let filteredResults = animalsArray;
+    let personalityTraitsArray = [];
     if (query.personalityTraits) {
-        // Save personalityTraits as a dedicated array.
         // If personalityTraits is a string, place it into a new array and save.
         if (typeof query.personalityTraits === 'string') {
             personalityTraitsArray = [query.personalityTraits];
         } else {
             personalityTraitsArray = query.personalityTraits;
         }
+        
         // Loop through each trait in the personalityTraits array:
         personalityTraitsArray.forEach(trait => {
             // Check the trait against each animal in the filteredResults array.
