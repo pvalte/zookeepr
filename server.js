@@ -15,7 +15,7 @@ function filterByQuery(query, animalsArray) {
         } else {
             personalityTraitsArray = query.personalityTraits;
         }
-        
+
         // Loop through each trait in the personalityTraits array:
         personalityTraitsArray.forEach(trait => {
             // Check the trait against each animal in the filteredResults array.
@@ -43,6 +43,11 @@ function filterByQuery(query, animalsArray) {
     return filteredResults;
 }
 
+function findById(id, animalsArray) {
+    const result = animalsArray.filter(animal => animal.id === id)[0];
+    return result;
+}
+
 //add the route
 app.get('/api/animals', (req, res) => {
     let results = animals;
@@ -50,6 +55,17 @@ app.get('/api/animals', (req, res) => {
         results = filterByQuery(req.query, results);
     }
     res.json(results);
+});
+
+//get one animal by param
+app.get('/api/animals/:id', (req, res) => {
+    const result = findById(req.params.id, animals);
+    if (result) {
+      res.json(result);
+    //send 404 error if no id found
+    } else {
+      res.send(404);
+    }
 });
 
 // Start the server on the port
