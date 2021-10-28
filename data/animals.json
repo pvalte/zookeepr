@@ -136,6 +136,16 @@
         "loving"
       ],
       "id": "13"
+    },
+    {
+      "name": "Jack Jack",
+      "species": "Feline",
+      "diet": "carnivore",
+      "personalityTraits": [
+        "zany",
+        "goofy"
+      ],
+      "id": "14"
     }
   ]
 }
